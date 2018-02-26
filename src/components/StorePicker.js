@@ -9,10 +9,11 @@ class StorePicker extends React.Component {
 	goToStore(event) {
 		event.preventDefault();
 		console.log('You changed the URL');
-		//grabbing the text from the box
-		console.log(this.storeInput.value);
-		//transitioning to respective routes
-
+		//first grabbing the text from the box
+		const storeId = this.storeInput.value;
+		console.log(`Going to ${storeId}`)
+		//second transitioning to respective routes
+		this.context.router.transitionTo(`/store/${storeId}`);
 	}
 
 	render() {
@@ -25,6 +26,10 @@ class StorePicker extends React.Component {
 			</form>
 		)
 	}
+}
+
+StorePicker.contextTypes = {
+	router: React.PropTypes.object
 }
 
 export default StorePicker;
